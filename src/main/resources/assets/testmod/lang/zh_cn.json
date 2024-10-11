@@ -1,0 +1,26 @@
+{
+  "item.testmod.sapphire": "蓝宝石",
+  "item.testmod.raw_sapphire": "粗蓝宝石",
+
+  "item.testmod.metal_detector": "金属探测器",
+
+  "item.testmod.meshi": "饭",
+  "item.testmod.bamboo_bucket": "竹碗",
+
+
+
+  "block.testmod.sapphire_block": "蓝宝石块",
+  "block.testmod.raw_sapphire_block": "粗蓝宝石块",
+
+  "block.testmod.sapphire_ore": "蓝宝石矿",
+  "block.testmod.deepslate_sapphire_ore": "深板蓝宝石矿",
+  "block.testmod.nether_sapphire_ore": "下界蓝宝石矿",
+
+  "block.testmod.sound_block": "声音方块",
+
+  "block.testmod.spring_spawner": "温泉机",
+
+
+  "creativetab.tutorial_tab": "蓝宝石",
+  "creativetab.meshi_tab": "竹"
+}
