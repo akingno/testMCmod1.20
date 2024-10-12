@@ -1,3 +1,4 @@
+
 {
   "type": "minecraft:block",
   "pools": [
@@ -11,11 +12,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "testmod:raw_sapphire_block"
+          "name": "testmod:spring_spawner"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "testmod:blocks/sapphire_block"
+  "random_sequence": "testmod:blocks/spring_spawner"
 }

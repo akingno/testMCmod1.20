@@ -2,6 +2,7 @@ package com.example.testmod.fluid;
 
 import com.example.testmod.TestMod;
 import com.example.testmod.block.ModBlocks;
+import com.example.testmod.item.ModItems;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -25,7 +26,7 @@ public class ModFluids {
             ModFluidTypes.SPRING_FLUID_TYPE, SPRING_FLUID_SOURCE, FLOWING_SPRING_WATER)
             .slopeFindDistance(10)
             .levelDecreasePerBlock(1)
-            .block(ModBlocks.SPRING_BLOCK)
+            .block(ModBlocks.SPRING_BLOCK).bucket(ModItems.SPRING_BUCKET)
             .tickRate(10);
 
 

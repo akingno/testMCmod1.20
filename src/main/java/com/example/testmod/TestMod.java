@@ -1,9 +1,11 @@
 package com.example.testmod;
 
 import com.example.testmod.block.ModBlocks;
+import com.example.testmod.event.ModEvents;
 import com.example.testmod.fluid.ModFluidTypes;
 import com.example.testmod.fluid.ModFluids;
 import com.example.testmod.item.ModCreativeModTabs;
+import com.example.testmod.item.ModFoods;
 import com.example.testmod.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -42,6 +44,8 @@ public class TestMod
         ModBlocks.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
+        ModEvents.register(modEventBus);
+
 
 
         modEventBus.addListener(this::commonSetup);

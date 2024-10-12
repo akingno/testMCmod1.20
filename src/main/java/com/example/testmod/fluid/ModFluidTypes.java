@@ -30,7 +30,7 @@ public class ModFluidTypes {
             FluidType.Properties.create()
                     .canSwim(true)
                     .canExtinguish(true)
-                    .lightLevel(5)
+                    .lightLevel(3)
                     .density(15)
                     .viscosity(5)
                     .sound(SoundAction.get("drink"),

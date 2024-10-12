@@ -13,7 +13,9 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -45,9 +47,6 @@ public class SpringSpawner extends Block {
         this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0).setValue(ACTIVE, false));
     }
 
-    public boolean hasLevel(BlockState state) {
-        return state.getValue(LEVEL) > 0;
-    }
 
     @Override
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
@@ -171,7 +170,7 @@ public class SpringSpawner extends Block {
 
             if (!isActive) {
 
-                player.sendSystemMessage(Component.literal("Turn on Spring"));
+                //player.sendSystemMessage(Component.literal("Turn on Spring"));
 
                 // 获取上方层内的空方块和流动水方块位置
                 Set<BlockPos> posSet = getFluidToList(world, pos.above(), ModFluids.SPRING_FLUID_SOURCE.get(), 300);
@@ -192,7 +191,7 @@ public class SpringSpawner extends Block {
             else{
                 //如果已经开启，那么把其变为关闭，并遍历所有水方块变为空气方块
 
-                player.sendSystemMessage(Component.literal("Turn off Spring"));
+                //player.sendSystemMessage(Component.literal("Turn off Spring"));
                 Set<BlockPos> posSet = getWaterToList(world, pos.above(), ModFluids.SPRING_FLUID_SOURCE.get(), 300);
 
                 // 将所有水源方块转换为流动水

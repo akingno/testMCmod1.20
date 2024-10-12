@@ -26,6 +26,9 @@ public class MeshiItem extends Item {
      */
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving) {
+        // 调用父类方法应用饱食度恢复
+        ItemStack resultStack = super.finishUsingItem(stack, level, entityLiving);
+
         if (!level.isClientSide && entityLiving instanceof Player) {
             // 在服务器端清除效果并处理成竹碗
             if (entityLiving instanceof ServerPlayer serverPlayer) {
@@ -39,8 +42,9 @@ public class MeshiItem extends Item {
         }
 
         // 返回 BAMBOO_BUCKET 物品
-        return stack.isEmpty() ? new ItemStack(ModItems.BAMBOO_BUCKET.get()) : stack;
+        return stack.isEmpty() ? new ItemStack(ModItems.BAMBOO_BUCKET.get()) : resultStack;
     }
+
 
     /**
      * 设置物品使用持续时间

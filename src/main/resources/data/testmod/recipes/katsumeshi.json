@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:cooked_porkchop" },
+    { "item": "testmod:meshi" }
+  ],
+  "result": {
+    "item": "testmod:katsumeshi",
+    "count": 1
+  }
+}

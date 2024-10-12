@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:salmon" },
+    { "item": "testmod:meshi" }
+  ],
+  "result": {
+    "item": "testmod:tekka",
+    "count": 1
+  }
+}
