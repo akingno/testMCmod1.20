@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
@@ -34,6 +35,7 @@ import java.util.stream.Stream;
 
 public class SpringSpawner extends Block {
     public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL;
+    public static Boolean IsActive = false;
 
     public SpringSpawner(BlockBehaviour.Properties properties) {
         super(properties);
@@ -50,56 +52,96 @@ public class SpringSpawner extends Block {
         int lvl = state.getValue(LEVEL);
 
         if (lvl > 0) {
-            if (world.isEmptyBlock(pos.above())) {
-                //world.setBlock(pos.above(), ModBlocks.HOT_SPRING_BLOCK.get().defaultBlockState(), Block.UPDATE_ALL);
-                world.setBlock(pos.above(), Blocks.WATER.defaultBlockState(), Block.UPDATE_ALL);
-            } else {
-                //Set<BlockPos> posSet = getFluidToList(world, pos.above(), MeshiFluids.HOT_SPRING.get(), 100 * lvl);
-                Set<BlockPos> posSet = getFluidToList(world, pos.above(), Fluids.WATER, 100 * lvl);
-                posSet.removeIf(px -> world.getFluidState(px).isEmpty());
-                int count = 0;
-                Iterator<BlockPos> iterator = posSet.iterator();
+            // 获取符合条件的流动水和空气方块
+            Set<BlockPos> posSet = getFluidToList(world, pos.above(), Fluids.WATER, 300);
+            posSet.removeIf(px -> !world.isEmptyBlock(px) && world.getFluidState(px).isSource()); // 排除非空方块和水源
 
-                while (iterator.hasNext()) {
-                    BlockPos p = iterator.next();
-                    if (world.getFluidState(p).getAmount() == 7 && world.getFluidState(p.below()).isEmpty()) {
+            // 逐步提升水位
+            for (BlockPos p : posSet) {
+                BlockState currentState = world.getBlockState(p);
+                int currentLevel = currentState.hasProperty(BlockStateProperties.LEVEL)
+                        ? currentState.getValue(BlockStateProperties.LEVEL)
+                        : 8; // 8 表示非水方块
 
-                        //world.setBlock(p.above(), ModBlocks.HOT_SPRING_BLOCK.get().defaultBlockState(), Block.UPDATE_ALL);
-                        world.setBlock(pos.above(), Blocks.WATER.defaultBlockState(), Block.UPDATE_ALL);
-                        count++;
-                        if (count > lvl * 2) {
-                            break;
-                        }
-                    }
-                }
-
-                if (count == 0) {
-
-                    world.setBlock(pos, state.setValue(LEVEL, 0), Block.UPDATE_ALL);
+                if (currentLevel == 8) {
+                    // 空方块 -> 转为流动水 LEVEL 6
+                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 6), Block.UPDATE_ALL);
+                } else if (currentLevel > 1) {
+                    // 流动水逐步上涨 -> LEVEL 减小
+                    world.setBlock(p, currentState.setValue(BlockStateProperties.LEVEL, currentLevel - 1), Block.UPDATE_ALL);
+                } else if (currentLevel == 1) {
+                    // LEVEL 1 流动水 -> 转为水源方块
+                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 0), Block.UPDATE_ALL);
                 }
             }
-            world.scheduleTick(pos, this, 100);
+
+            // 确保定时调用 tick，以便持续上升水位
+            world.scheduleTick(pos, this, 3);
         }
     }
 
+
+
+
     public static Set<BlockPos> getFluidToList(Level world, BlockPos pos, Fluid fluid, int limit) {
-        List<BlockPos> nextTargets = new ArrayList<>();
-        nextTargets.add(pos);
-        Set<BlockPos> foundPositions = new LinkedHashSet<>();
+        Queue<BlockPos> queue = new LinkedList<>();
+        Set<BlockPos> foundPositions = new HashSet<>();
+        queue.add(pos);
 
-        do {
-            Stream<BlockPos> stream = nextTargets.stream().flatMap(target ->
-                            Arrays.stream(Direction.values())
-                                    .filter(d -> d != Direction.UP)
-                                    .map(target::relative)
-                    ).filter(fixedPos -> world.getFluidState(fixedPos).getType().isSame(fluid))
-                    .limit(limit - foundPositions.size());
+        while (!queue.isEmpty() && foundPositions.size() < limit) {
+            BlockPos currentPos = queue.poll();
 
-            nextTargets = stream.filter(foundPositions::add).collect(Collectors.toList());
-        } while (foundPositions.size() <= limit && !nextTargets.isEmpty());
+            // 判断是否为空方块或流动水，确保只遍历同层
+            if (currentPos.getY() == pos.getY() &&
+                    (world.isEmptyBlock(currentPos) ||
+                            (world.getFluidState(currentPos).getType().isSame(fluid) && !world.getFluidState(currentPos).isSource()))) {
 
+                foundPositions.add(currentPos);
+
+                // 遍历水平相邻的四个方向
+                for (Direction direction : Direction.Plane.HORIZONTAL) {
+                    BlockPos nextPos = currentPos.relative(direction);
+
+                    // 如果是空方块或流动水，且未被访问过，则添加到队列中
+                    if (!foundPositions.contains(nextPos) &&
+                            (world.isEmptyBlock(nextPos) ||
+                                    (world.getFluidState(nextPos).getType().isSame(fluid) && !world.getFluidState(nextPos).isSource()))) {
+
+                        queue.add(nextPos);
+                    }
+                }
+            }
+        }
         return foundPositions;
     }
+
+    public static Set<BlockPos> getWaterToList(Level world, BlockPos pos, Fluid fluid, int limit) {
+        Queue<BlockPos> queue = new LinkedList<>();
+        Set<BlockPos> foundPositions = new HashSet<>();
+        queue.add(pos);
+
+        while (!queue.isEmpty() && foundPositions.size() < limit) {
+            BlockPos currentPos = queue.poll();
+
+            // 确保方块为同层水源方块
+            if (currentPos.getY() == pos.getY() && world.getFluidState(currentPos).isSource()) {
+                foundPositions.add(currentPos);
+
+                // 遍历四个方向，排除上下方块
+                for (Direction direction : Direction.Plane.HORIZONTAL) {
+                    BlockPos nextPos = currentPos.relative(direction);
+                    if (!foundPositions.contains(nextPos) && world.getFluidState(nextPos).getType().isSame(fluid)
+                            && world.getFluidState(nextPos).isSource()) {
+                        queue.add(nextPos);
+                    }
+                }
+            }
+        }
+        return foundPositions;
+    }
+
+
+
 
     @OnlyIn(Dist.CLIENT)
     @Override
@@ -121,28 +163,48 @@ public class SpringSpawner extends Block {
                                  InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide) {
             player.sendSystemMessage(Component.literal("Using"));
-            if (player.getItemInHand(hand).is(Items.BUCKET)) {
-                player.sendSystemMessage(Component.literal("Using with bucket"));
 
-                //Set<BlockPos> posSet = getFluidToList(world, pos.above(), MeshiFluids.HOT_SPRING.get(), 300);
+            if (!IsActive) {
+                IsActive = true;
+                player.sendSystemMessage(Component.literal("Turn on Spring"));
+
+                // 获取上方层内的空方块和流动水方块位置
                 Set<BlockPos> posSet = getFluidToList(world, pos.above(), Fluids.WATER, 300);
+                posSet.removeIf(px -> !world.isEmptyBlock(px) || world.getFluidState(px).isSource()); // 保留空方块和流动水
 
-                posSet.removeIf(px -> world.getFluidState(px).isEmpty());
+                // 将符合条件的位置设置为流动水，初始水位为 LEVEL 6
                 for (BlockPos p : posSet) {
+                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 5), Block.UPDATE_ALL);
+                }
 
-                    world.setBlock(p, world.getBlockState(p).setValue(LEVEL, 7), Block.UPDATE_ALL);
+                // 启动 tick，开始逐步提升水位
+                world.setBlock(pos, state.setValue(LEVEL, 1), Block.UPDATE_ALL);
+                world.scheduleTick(pos, this, 1);
+
+                return InteractionResult.SUCCESS;
+            }
+            else{
+                //如果已经开启，那么把其变为关闭，并遍历所有水方块变为空气方块
+
+                IsActive = false;
+                player.sendSystemMessage(Component.literal("Turn off Spring"));
+                Set<BlockPos> posSet = getWaterToList(world, pos.above(), Fluids.WATER, 300);
+
+                // 将所有水源方块转换为流动水
+                for (BlockPos p : posSet) {
+                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 1), Block.UPDATE_ALL);
                 }
 
                 world.setBlock(pos, state.setValue(LEVEL, 0), Block.UPDATE_ALL);
                 return InteractionResult.SUCCESS;
             }
 
-            state = state.cycle(LEVEL);
+            /*state = state.cycle(LEVEL);
             int lvl = state.getValue(LEVEL);
             world.setBlock(pos, state, 3);
             if (lvl > 0) {
                 world.scheduleTick(pos, this, 100);
-            }
+            }*/
         }
         return InteractionResult.CONSUME;
     }
