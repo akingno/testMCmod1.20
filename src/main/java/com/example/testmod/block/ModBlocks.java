@@ -1,17 +1,15 @@
 package com.example.testmod.block;
 
 import com.example.testmod.TestMod;
-import com.example.testmod.block.custom.HotSpringBlock;
 import com.example.testmod.block.custom.SoundBlock;
+import com.example.testmod.block.custom.SpringFluidBlock;
 import com.example.testmod.block.custom.SpringSpawner;
+import com.example.testmod.fluid.ModFluids;
 import com.example.testmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -48,11 +46,8 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE)));
 
-    public static final RegistryObject<Block> HOT_SPRING_BLOCK = registerBlock("hot_spring_block",
-            () -> new HotSpringBlock(BlockBehaviour.Properties.copy(Blocks.WATER)
-                    .noCollission()
-                    .strength(100.0f)
-                    .sound(SoundType.WET_GRASS))); // 设置与水类似的声音
+    public static final RegistryObject<LiquidBlock> SPRING_BLOCK = BLOCKS.register("spring_block",
+            () -> new SpringFluidBlock());
 
 
 

@@ -1,9 +1,13 @@
 package com.example.testmod;
 
 import com.example.testmod.block.ModBlocks;
+import com.example.testmod.fluid.ModFluidTypes;
+import com.example.testmod.fluid.ModFluids;
 import com.example.testmod.item.ModCreativeModTabs;
 import com.example.testmod.item.ModItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,6 +40,8 @@ public class TestMod
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
+        ModFluids.register(modEventBus);
 
 
         modEventBus.addListener(this::commonSetup);
@@ -73,7 +79,8 @@ public class TestMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SPRING_FLUID_SOURCE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
         }
     }
 }

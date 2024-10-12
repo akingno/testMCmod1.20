@@ -2,6 +2,7 @@ package com.example.testmod.block.custom;
 
 import com.example.testmod.block.ModBlocks;
 
+import com.example.testmod.fluid.ModFluids;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,11 +36,13 @@ import java.util.stream.Stream;
 
 public class SpringSpawner extends Block {
     public static final IntegerProperty LEVEL = BlockStateProperties.LEVEL;
-    public static Boolean IsActive = false;
+
+    public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
+
 
     public SpringSpawner(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(LEVEL, 0).setValue(ACTIVE, false));
     }
 
     public boolean hasLevel(BlockState state) {
@@ -50,10 +53,9 @@ public class SpringSpawner extends Block {
     public void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         super.tick(state, world, pos, random);
         int lvl = state.getValue(LEVEL);
-
         if (lvl > 0) {
             // 获取符合条件的流动水和空气方块
-            Set<BlockPos> posSet = getFluidToList(world, pos.above(), Fluids.WATER, 300);
+            Set<BlockPos> posSet = getFluidToList(world, pos.above(), ModFluids.SPRING_FLUID_SOURCE.get(), 300);
             posSet.removeIf(px -> !world.isEmptyBlock(px) && world.getFluidState(px).isSource()); // 排除非空方块和水源
 
             // 逐步提升水位
@@ -65,19 +67,21 @@ public class SpringSpawner extends Block {
 
                 if (currentLevel == 8) {
                     // 空方块 -> 转为流动水 LEVEL 6
-                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 6), Block.UPDATE_ALL);
+                    world.setBlock(p, ModBlocks.SPRING_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LEVEL, 6), Block.UPDATE_ALL);
                 } else if (currentLevel > 1) {
                     // 流动水逐步上涨 -> LEVEL 减小
                     world.setBlock(p, currentState.setValue(BlockStateProperties.LEVEL, currentLevel - 1), Block.UPDATE_ALL);
                 } else if (currentLevel == 1) {
                     // LEVEL 1 流动水 -> 转为水源方块
-                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 0), Block.UPDATE_ALL);
+                    world.setBlock(p, ModBlocks.SPRING_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LEVEL, 0), Block.UPDATE_ALL);
                 }
             }
 
             // 确保定时调用 tick，以便持续上升水位
-            world.scheduleTick(pos, this, 3);
+            world.scheduleTick(pos, this, 2);
         }
+
+
     }
 
 
@@ -162,23 +166,25 @@ public class SpringSpawner extends Block {
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
                                  InteractionHand hand, BlockHitResult hit) {
         if (!world.isClientSide) {
-            player.sendSystemMessage(Component.literal("Using"));
+            //player.sendSystemMessage(Component.literal("Using"));
+            boolean isActive = state.getValue(ACTIVE);
 
-            if (!IsActive) {
-                IsActive = true;
+            if (!isActive) {
+
                 player.sendSystemMessage(Component.literal("Turn on Spring"));
 
                 // 获取上方层内的空方块和流动水方块位置
-                Set<BlockPos> posSet = getFluidToList(world, pos.above(), Fluids.WATER, 300);
+                Set<BlockPos> posSet = getFluidToList(world, pos.above(), ModFluids.SPRING_FLUID_SOURCE.get(), 300);
                 posSet.removeIf(px -> !world.isEmptyBlock(px) || world.getFluidState(px).isSource()); // 保留空方块和流动水
 
                 // 将符合条件的位置设置为流动水，初始水位为 LEVEL 6
                 for (BlockPos p : posSet) {
-                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 5), Block.UPDATE_ALL);
+                    world.setBlock(p, ModBlocks.SPRING_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LEVEL, 5), Block.UPDATE_ALL);
                 }
 
                 // 启动 tick，开始逐步提升水位
-                world.setBlock(pos, state.setValue(LEVEL, 1), Block.UPDATE_ALL);
+                BlockState newState = state.setValue(ACTIVE, true).setValue(LEVEL, 1);
+                world.setBlock(pos, newState, Block.UPDATE_ALL);
                 world.scheduleTick(pos, this, 1);
 
                 return InteractionResult.SUCCESS;
@@ -186,16 +192,15 @@ public class SpringSpawner extends Block {
             else{
                 //如果已经开启，那么把其变为关闭，并遍历所有水方块变为空气方块
 
-                IsActive = false;
                 player.sendSystemMessage(Component.literal("Turn off Spring"));
-                Set<BlockPos> posSet = getWaterToList(world, pos.above(), Fluids.WATER, 300);
+                Set<BlockPos> posSet = getWaterToList(world, pos.above(), ModFluids.SPRING_FLUID_SOURCE.get(), 300);
 
                 // 将所有水源方块转换为流动水
                 for (BlockPos p : posSet) {
-                    world.setBlock(p, Blocks.WATER.defaultBlockState().setValue(BlockStateProperties.LEVEL, 1), Block.UPDATE_ALL);
+                    world.setBlock(p, ModBlocks.SPRING_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LEVEL, 1), Block.UPDATE_ALL);
                 }
 
-                world.setBlock(pos, state.setValue(LEVEL, 0), Block.UPDATE_ALL);
+                world.setBlock(pos, state.setValue(LEVEL, 0).setValue(ACTIVE,false), Block.UPDATE_ALL);
                 return InteractionResult.SUCCESS;
             }
 
@@ -211,6 +216,6 @@ public class SpringSpawner extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LEVEL);
+        builder.add(LEVEL,ACTIVE);
     }
 }
