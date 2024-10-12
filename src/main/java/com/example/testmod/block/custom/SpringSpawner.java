@@ -66,8 +66,8 @@ public class SpringSpawner extends Block {
                         : 8; // 8 表示非水方块
 
                 if (currentLevel == 8) {
-                    // 空方块 -> 转为流动水 LEVEL 6
-                    world.setBlock(p, ModBlocks.SPRING_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LEVEL, 6), Block.UPDATE_ALL);
+                    // 空方块 -> 转为流动水 LEVEL 7
+                    world.setBlock(p, ModBlocks.SPRING_BLOCK.get().defaultBlockState().setValue(BlockStateProperties.LEVEL, 7), Block.UPDATE_ALL);
                 } else if (currentLevel > 1) {
                     // 流动水逐步上涨 -> LEVEL 减小
                     world.setBlock(p, currentState.setValue(BlockStateProperties.LEVEL, currentLevel - 1), Block.UPDATE_ALL);

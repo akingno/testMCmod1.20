@@ -27,7 +27,7 @@ public class MeshiItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entityLiving) {
         if (!level.isClientSide && entityLiving instanceof Player) {
-            // 在服务器端清除效果并处理成竹桶
+            // 在服务器端清除效果并处理成竹碗
             if (entityLiving instanceof ServerPlayer serverPlayer) {
                 CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack); // 触发进度
                 serverPlayer.awardStat(Stats.ITEM_USED.get(this));          // 统计使用次数
