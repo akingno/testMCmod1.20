@@ -46,7 +46,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.NAMAKO_SLAB.get());
                         pOutput.accept(ModBlocks.PLASTER.get());
                         pOutput.accept(ModBlocks.PLASTER_STAIRS.get());
-                        pOutput.accept(ModBlocks.PLASTER_SLAB.get());
+                        pOutput.accept(ModBlocks.ANDON.get());
 
 
                     })

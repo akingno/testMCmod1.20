@@ -4,7 +4,8 @@
     "recipes": [
       "testmod:kawara",
       "testmod:namako",
-      "testmod:plaster"
+      "testmod:plaster",
+      "testmod:andon"
     ]
   },
   "criteria": {

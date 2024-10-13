@@ -1,0 +1,19 @@
+
+{
+  "multipart": [
+    {"apply": { "model": "testmod:block/andon_outer" }},
+    {"apply": { "model": "testmod:block/andon_leg" }},
+    { "when": {"facing":"north"},
+      "apply": { "model": "testmod:block/andon_inner" , "y": 180}
+    },
+    { "when": {"facing":"south"},
+      "apply": { "model": "testmod:block/andon_inner" }
+    },
+    { "when": {"facing":"west"},
+      "apply": { "model": "testmod:block/andon_inner" , "y": 90}
+    },
+    { "when": {"facing":"east"},
+      "apply": { "model": "testmod:block/andon_inner" , "y": 270}
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "STS",
+    "SLS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "L": {
+      "item": "minecraft:torch"
+    },
+    "T": {
+      "item": "testmod:tudura"
+    }
+  },
+  "result": {
+    "item": "testmod:andon",
+    "count": 1
+  }
+}
