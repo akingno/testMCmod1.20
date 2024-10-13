@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "testmod:kawara"
+    }
+  },
+  "result": {
+    "item": "testmod:kawara_stairs",
+    "count": 4
+  }
+}

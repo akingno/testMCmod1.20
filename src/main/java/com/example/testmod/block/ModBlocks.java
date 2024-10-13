@@ -11,6 +11,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -25,6 +27,44 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+
+    public static final RegistryObject<Block> PLASTER = registerBlock("plaster",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(2.0F, 6.0F)));
+
+    public static final RegistryObject<Block> PLASTER_STAIRS = registerBlock("plaster_stairs",
+            () -> new StairBlock(()->ModBlocks.PLASTER.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(ModBlocks.PLASTER.get())));
+
+    public static final RegistryObject<Block> PLASTER_SLAB = registerBlock("plaster_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(ModBlocks.PLASTER.get())));
+
+
+    public static final RegistryObject<Block> KAWARA = registerBlock("kawara",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.BASEDRUM)
+                    .requiresCorrectToolForDrops()
+                    .strength(2.0F, 6.0F)));
+
+    public static final RegistryObject<Block> KAWARA_STAIRS = registerBlock("kawara_stairs",
+            () -> new StairBlock(()->ModBlocks.KAWARA.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(ModBlocks.KAWARA.get())));
+
+    public static final RegistryObject<Block> KAWARA_SLAB = registerBlock("kawara_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(ModBlocks.KAWARA.get())));
+
+    public static final RegistryObject<Block> NAMAKO = registerBlock("namako",
+            () -> new Block(BlockBehaviour.Properties.copy(ModBlocks.KAWARA.get())));
+
+    public static final RegistryObject<Block> NAMAKO_STAIRS = registerBlock("namako_stairs",
+            () -> new StairBlock(()->ModBlocks.NAMAKO.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(ModBlocks.NAMAKO.get())));
+
+    public static final RegistryObject<Block> NAMAKO_SLAB = registerBlock("namako_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(ModBlocks.KAWARA.get())));
+
 
     public static final RegistryObject<Block> SPRING_SPAWNER = registerBlock("spring_spawner",
             () -> new SpringSpawner(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)

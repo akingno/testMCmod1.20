@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "testmod:block/kawara_slab" },
+        "type=top": { "model": "testmod:block/kawara_slab_top" },
+        "type=double": { "model": "testmod:block/kawara" }
+    }
+}

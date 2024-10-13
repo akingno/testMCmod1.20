@@ -1,9 +1,14 @@
 {
   "values": [
-    "testmod:sapphire_block",
-    "testmod:raw_sapphire_block",
-    "testmod:sapphire_ore",
-    "testmod:deepslate_sapphire_ore",
-    "testmod:nether_sapphire_ore"
+    "testmod:plaster",
+    "testmod:plaster_slab",
+    "testmod:plaster_stairs",
+    "testmod:kawara",
+    "testmod:kawara_slab",
+    "testmod:kawara_stairs",
+    "testmod:namako",
+    "testmod:namako_slab",
+    "testmod:namako_stairs"
+
   ]
 }

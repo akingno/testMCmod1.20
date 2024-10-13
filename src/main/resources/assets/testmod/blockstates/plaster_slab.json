@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "testmod:block/plaster_slab" },
+        "type=top": { "model": "testmod:block/plaster_slab_top" },
+        "type=double": { "model": "testmod:block/plaster" }
+    }
+}

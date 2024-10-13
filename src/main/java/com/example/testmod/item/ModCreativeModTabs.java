@@ -35,6 +35,16 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.OYAKODON.get());
                         pOutput.accept(ModItems.TEKKA.get());
 
+                        pOutput.accept(ModBlocks.KAWARA.get());
+                        pOutput.accept(ModBlocks.KAWARA_STAIRS.get());
+                        pOutput.accept(ModBlocks.KAWARA_SLAB.get());
+                        pOutput.accept(ModBlocks.NAMAKO.get());
+                        pOutput.accept(ModBlocks.NAMAKO_STAIRS.get());
+                        pOutput.accept(ModBlocks.NAMAKO_SLAB.get());
+                        pOutput.accept(ModBlocks.PLASTER.get());
+                        pOutput.accept(ModBlocks.PLASTER_STAIRS.get());
+                        pOutput.accept(ModBlocks.PLASTER_SLAB.get());
+
 
                     })
                     .build());

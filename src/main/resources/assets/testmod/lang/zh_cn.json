@@ -2,6 +2,7 @@
 
   "item.testmod.meshi": "饭",
   "item.testmod.bamboo_bucket": "竹碗",
+  "item.testmod.tudura": "竹篓",
   "item.testmod.metal_detector": "金属探测器",
   "item.testmod.spring_bucket": "温泉桶",
   "item.testmod.gyumeshi": "牛肉饭",
@@ -12,6 +13,16 @@
   "item.testmod.tekka": "金枪鱼寿司饭",
 
 
+
+  "block.testmod.plaster": "灰浆",
+  "block.testmod.plaster_stairs": "灰浆楼梯",
+  "block.testmod.plaster_slab": "灰浆半砖",
+  "block.testmod.kawara": "瓦块",
+  "block.testmod.kawara_stairs": "瓦楼梯",
+  "block.testmod.kawara_slab": "瓦半砖",
+  "block.testmod.namako": "菱纹墙",
+  "block.testmod.namako_stairs": "菱纹楼梯",
+  "block.testmod.namako_slab": "菱纹半砖",
   "block.testmod.sound_block": "声音方块",
 
   "block.testmod.spring_spawner": "温泉机",
