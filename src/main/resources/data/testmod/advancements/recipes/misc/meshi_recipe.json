@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "testmod:eggmeshi",
+      "testmod:gyumeshi",
+      "testmod:katsumeshi",
+      "testmod:tekedon",
+      "testmod:oyakodon",
+      "testmod:kinokomeshi",
+      "testmod:tekka"
+    ]
+  },
+  "criteria": {
+    "has_bamboo_bucket": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "testmod:bamboo_bucket"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_bamboo_bucket"]
+  ]
+}

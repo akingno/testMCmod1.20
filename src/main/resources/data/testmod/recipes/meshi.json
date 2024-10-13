@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:wheat" },
+    { "item": "testmod:bamboo_bucket" }
+  ],
+  "result": {
+    "item": "testmod:meshi",
+    "count": 1
+  }
+}

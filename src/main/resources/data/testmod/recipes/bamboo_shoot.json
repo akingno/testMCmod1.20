@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:bamboo"
+    }
+  ],
+  "result": {
+    "item": "testmod:bamboo_shoot",
+    "count": 1
+  }
+}

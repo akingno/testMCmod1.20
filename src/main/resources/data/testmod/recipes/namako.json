@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PKP",
+    "KTK",
+    "PKP"
+  ],
+  "key": {
+    "P": {
+      "item": "testmod:plaster"
+    },
+    "K": {
+      "item": "testmod:kawara"
+    },
+    "T": {
+      "item": "testmod:tudura"
+    }
+  },
+  "result": {
+    "item": "testmod:namako",
+    "count": 8
+  }
+}

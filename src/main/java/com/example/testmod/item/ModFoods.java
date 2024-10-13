@@ -6,7 +6,7 @@ import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
     //ep8 2:20 饭
-    public static final FoodProperties MESHI = new FoodProperties.Builder().nutrition(4)
+    public static final FoodProperties MESHI = new FoodProperties.Builder().nutrition(3)
             .saturationMod(0.1f).build();
 
 
@@ -17,7 +17,7 @@ public class ModFoods {
             nutrition(12).saturationMod(0.4f).build();
 
     public static final FoodProperties KINOKOMESHI = new FoodProperties.Builder().
-            nutrition(6).saturationMod(0.3f)
+            nutrition(5).saturationMod(0.3f)
             .effect(() -> new MobEffectInstance(MobEffects.CONFUSION,
                     200, 0), 0.1f).build();
 
@@ -25,9 +25,12 @@ public class ModFoods {
             .nutrition(5).saturationMod(0.1f).build();
 
     public static final FoodProperties OYAKODON = new FoodProperties.Builder()
-            .nutrition(6).saturationMod(0.2f).build();
+            .nutrition(8).saturationMod(0.2f).build();
 
     public static final FoodProperties TEKKA = new FoodProperties.Builder()
             .nutrition(7).saturationMod(0.1f).build();
+
+    public static final FoodProperties TAKEDON = new FoodProperties.Builder().
+            nutrition(5).saturationMod(0.1f).build();
 
 }

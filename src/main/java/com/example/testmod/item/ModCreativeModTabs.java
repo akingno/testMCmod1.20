@@ -27,6 +27,8 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.SPRING_SPAWNER.get());
                         pOutput.accept(ModItems.METAL_DETECTOR.get());
                         pOutput.accept(ModItems.SPRING_BUCKET.get());
+                        pOutput.accept(ModItems.TUDURA.get());
+                        pOutput.accept(ModItems.BAMBOO_SHOOT.get());
 
                         pOutput.accept(ModItems.GYUMESHI.get());
                         pOutput.accept(ModItems.KATSUMESHI.get());
@@ -34,6 +36,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.EGGMESHI.get());
                         pOutput.accept(ModItems.OYAKODON.get());
                         pOutput.accept(ModItems.TEKKA.get());
+                        pOutput.accept(ModItems.TAKEDON.get());
 
                         pOutput.accept(ModBlocks.KAWARA.get());
                         pOutput.accept(ModBlocks.KAWARA_STAIRS.get());

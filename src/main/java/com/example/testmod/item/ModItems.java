@@ -2,6 +2,7 @@ package com.example.testmod.item;
 
 import com.example.testmod.TestMod;
 import com.example.testmod.fluid.ModFluids;
+import com.example.testmod.item.custom.BambooShootItem;
 import com.example.testmod.item.custom.MeshiItem;
 import com.example.testmod.item.custom.MetalDetectorItem;
 
@@ -19,6 +20,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> BAMBOO_BUCKET = ITEMS.register("bamboo_bucket",
             () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BAMBOO_SHOOT = ITEMS.register("bamboo_shoot",
+            () -> new BambooShootItem(new Item.Properties()));
 
     public static final RegistryObject<Item> TUDURA = ITEMS.register("tudura",
             () -> new Item(new Item.Properties()));
@@ -41,6 +45,8 @@ public class ModItems {
             () -> new MeshiItem(new Item.Properties().food(ModFoods.OYAKODON).stacksTo(64)));
     public static final RegistryObject<Item> TEKKA = ITEMS.register("tekka",
             () -> new MeshiItem(new Item.Properties().food(ModFoods.TEKKA).stacksTo(64)));
+    public static final RegistryObject<Item> TAKEDON = ITEMS.register("takedon",
+            () -> new MeshiItem(new Item.Properties().food(ModFoods.TAKEDON).stacksTo(64)));
 
 
 

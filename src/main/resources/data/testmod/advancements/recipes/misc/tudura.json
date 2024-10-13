@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "testmod:kawara",
+      "testmod:namako",
+      "testmod:plaster"
+    ]
+  },
+  "criteria": {
+    "has_tudura": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "testmod:tudura"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_tudura"]
+  ]
+}
