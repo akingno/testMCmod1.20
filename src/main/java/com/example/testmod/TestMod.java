@@ -5,12 +5,12 @@ import com.example.testmod.event.ModEvents;
 import com.example.testmod.fluid.ModFluidTypes;
 import com.example.testmod.fluid.ModFluids;
 import com.example.testmod.item.ModCreativeModTabs;
-import com.example.testmod.item.ModFoods;
 import com.example.testmod.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -42,16 +42,21 @@ public class TestMod
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        //ModBlockEntities.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
         ModEvents.register(modEventBus);
+        ModSounds.register(modEventBus);
+
 
 
 
         modEventBus.addListener(this::commonSetup);
 
+
         MinecraftForge.EVENT_BUS.register(this);
-        modEventBus.addListener(this::addCreative);
+
+        //modEventBus.addListener(this::clientSetup);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -59,11 +64,7 @@ public class TestMod
 
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
 
-    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent

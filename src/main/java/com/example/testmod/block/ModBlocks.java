@@ -1,12 +1,10 @@
 package com.example.testmod.block;
 
 import com.example.testmod.TestMod;
-import com.example.testmod.block.custom.AndonBlock;
-import com.example.testmod.block.custom.SoundBlock;
-import com.example.testmod.block.custom.SpringFluidBlock;
-import com.example.testmod.block.custom.SpringSpawner;
+import com.example.testmod.block.custom.*;
 import com.example.testmod.fluid.ModFluids;
 import com.example.testmod.item.ModItems;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -30,6 +28,12 @@ public class ModBlocks {
                     strength(1.5F, 6.0F).sound(SoundType.WOOD)
                     .lightLevel((state)-> 14).noOcclusion()));
 
+    public static final RegistryObject<Block> WINDBELL = registerBlock("windbell",
+            () -> new WindbellBlock(BlockBehaviour.Properties.of()
+                    .strength(1.5f)
+                    .sound(SoundType.METAL)
+                    .noOcclusion()
+                    .randomTicks())); //随机tick
 
     public static final RegistryObject<Block> PLASTER = registerBlock("plaster",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)

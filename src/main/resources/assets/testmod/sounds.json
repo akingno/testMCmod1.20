@@ -1,0 +1,10 @@
+{
+  "windbell": {
+    "sounds": [
+      {
+        "name": "testmod:windbell",
+        "stream": true
+      }
+    ]
+  }
+}
