@@ -23,9 +23,14 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, TestMod.MOD_ID);
 
+    public static final RegistryObject<Block> WATERWHEEL = registerBlock("waterwheel",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.CHERRY_WOOD).strength(1.5F,
+                    3.0F).noOcclusion()));
+
+
     public static final RegistryObject<Block> ANDON = registerBlock("andon",
             () -> new AndonBlock(BlockBehaviour.Properties.copy(Blocks.LANTERN).
-                    strength(1.5F, 6.0F).sound(SoundType.WOOD)
+                    strength(1F, 1.0F).sound(SoundType.WOOD)
                     .lightLevel((state)-> 14).noOcclusion()));
 
     public static final RegistryObject<Block> WINDBELL = registerBlock("windbell",

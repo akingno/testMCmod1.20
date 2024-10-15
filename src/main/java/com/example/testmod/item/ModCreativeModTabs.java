@@ -48,7 +48,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.PLASTER_STAIRS.get());
                         pOutput.accept(ModBlocks.ANDON.get());
                         pOutput.accept(ModBlocks.WINDBELL.get());
-                        //pOutput.accept(ModBlocks.WATERWHEEL.get());
+                        pOutput.accept(ModBlocks.WATERWHEEL.get());
 
 
                     })
