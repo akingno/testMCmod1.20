@@ -1,6 +1,7 @@
 package com.example.testmod;
 
 import com.example.testmod.block.ModBlocks;
+import com.example.testmod.blockentity.ModBlockEntities;
 import com.example.testmod.event.ModEvents;
 import com.example.testmod.fluid.ModFluidTypes;
 import com.example.testmod.fluid.ModFluids;
@@ -9,11 +10,9 @@ import com.example.testmod.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -42,7 +41,7 @@ public class TestMod
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-        //ModBlockEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         ModFluidTypes.register(modEventBus);
         ModFluids.register(modEventBus);
         ModEvents.register(modEventBus);
@@ -82,6 +81,12 @@ public class TestMod
         {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SPRING_FLUID_SOURCE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
+
+            //BlockEntityRenderers.register(ModBlockEntities.WATERWHEEL_ENTITY.get(), WaterwheelRenderer::new);
+
+
         }
+
     }
+
 }
