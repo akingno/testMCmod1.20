@@ -1,12 +1,13 @@
 package com.example.testmod;
 
 import com.example.testmod.block.ModBlocks;
-import com.example.testmod.blockentity.ModBlockEntities;
+import com.example.testmod.block.entity.ModBlockEntities;
 import com.example.testmod.event.ModEvents;
 import com.example.testmod.fluid.ModFluidTypes;
 import com.example.testmod.fluid.ModFluids;
 import com.example.testmod.item.ModCreativeModTabs;
 import com.example.testmod.item.ModItems;
+import com.example.testmod.block.entity.client.WaterwheelRenderer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -21,6 +22,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
+
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(TestMod.MOD_ID)
@@ -46,6 +49,7 @@ public class TestMod
         ModFluids.register(modEventBus);
         ModEvents.register(modEventBus);
         ModSounds.register(modEventBus);
+        GeckoLib.initialize();
 
 
 
@@ -82,7 +86,11 @@ public class TestMod
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SPRING_FLUID_SOURCE.get(), RenderType.translucent());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_SPRING_WATER.get(), RenderType.translucent());
 
-            //BlockEntityRenderers.register(ModBlockEntities.WATERWHEEL_ENTITY.get(), WaterwheelRenderer::new);
+            event.enqueueWork(() -> {
+                // 设置水车方块的渲染层为透明，以避免静态渲染影响
+                ItemBlockRenderTypes.setRenderLayer(ModBlocks.WATERWHEEL.get(), RenderType.translucent());
+            });
+            BlockEntityRenderers.register(ModBlockEntities.WATERWHEEL_ENTITY.get(), WaterwheelRenderer::new);
 
 
         }

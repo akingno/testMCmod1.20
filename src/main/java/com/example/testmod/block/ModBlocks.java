@@ -24,7 +24,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, TestMod.MOD_ID);
 
     public static final RegistryObject<Block> WATERWHEEL = registerBlock("waterwheel",
-            () -> new WaterwheelBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_WOOD).strength(1.5F,
+            () -> new WaterwheelBlock(BlockBehaviour.Properties.of().strength(1.5F,
                     3.0F).noOcclusion()));
 
 

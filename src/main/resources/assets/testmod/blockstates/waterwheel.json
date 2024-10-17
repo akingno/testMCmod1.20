@@ -1,16 +1,5 @@
 {
-  "multipart": [
-    { "when": {"facing":"south"},
-      "apply": { "model": "testmod:block/waterwheel" , "y": 90}
-    },
-    { "when": {"facing":"west"},
-      "apply": { "model": "testmod:block/waterwheel" , "y": 180}
-    },
-    { "when": {"facing":"north"},
-      "apply": { "model": "testmod:block/waterwheel" , "y": 270}
-    },
-    { "when": {"facing":"east"},
-      "apply": { "model": "testmod:block/waterwheel" }
-    }
-  ]
+  "variants": {
+    "": { "model": "testmod:block/waterwheel" }
+  }
 }
