@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "testmod:block/plaster",
-        "top": "testmod:block/plaster",
-        "side": "testmod:block/plaster"
-    }
-}

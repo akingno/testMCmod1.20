@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SPS",
+    "STS",
+    "SPS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:iron_bars"
+    },
+    "T": {
+      "item": "sakuraak:tudura"
+    },
+    "P": {
+      "item": "minecraft:glass_pane"
+    }
+  },
+  "result": {
+    "item": "sakuraak:glass_door",
+    "count": 2
+  }
+}

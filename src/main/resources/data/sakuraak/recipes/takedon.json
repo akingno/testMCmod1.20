@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "sakuraak:bamboo_shoot" },
+    { "item": "sakuraak:meshi" }
+  ],
+  "result": {
+    "item": "sakuraak:takedon",
+    "count": 1
+  }
+}

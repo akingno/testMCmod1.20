@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sakuraak:block/andon",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "sakuraak:block/andon",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "sakuraak:block/andon"
+    },
+    "facing=west": {
+      "model": "sakuraak:block/andon",
+      "y": 90
+    }
+  }
+}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab",
-    "textures": {
-        "bottom": "testmod:block/namako",
-        "top": "testmod:block/namako",
-        "side": "testmod:block/namako"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/slab_top",
-    "textures": {
-        "bottom": "testmod:block/kawara",
-        "top": "testmod:block/kawara",
-        "side": "testmod:block/kawara"
-    }
-}

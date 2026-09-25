@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "top": "sakuraak:block/glass_door_top",
+    "bottom": "sakuraak:block/glass_door_bottom"
+  }
+}

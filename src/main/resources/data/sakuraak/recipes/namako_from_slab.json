@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "P",
+    "P"
+  ],
+  "key": {
+    "P": {
+      "item": "sakuraak:namako_slab"
+    }
+  },
+  "result": {
+    "item": "sakuraak:namako",
+    "count": 1
+  }
+}

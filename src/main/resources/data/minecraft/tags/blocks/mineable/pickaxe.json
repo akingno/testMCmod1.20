@@ -1,14 +1,14 @@
 {
+  "replace": false,
   "values": [
-    "testmod:plaster",
-    "testmod:plaster_slab",
-    "testmod:plaster_stairs",
-    "testmod:kawara",
-    "testmod:kawara_slab",
-    "testmod:kawara_stairs",
-    "testmod:namako",
-    "testmod:namako_slab",
-    "testmod:namako_stairs"
-
+    "sakuraak:plaster",
+    "sakuraak:plaster_stairs",
+    "sakuraak:plaster_slab",
+    "sakuraak:kawara",
+    "sakuraak:kawara_stairs",
+    "sakuraak:kawara_slab",
+    "sakuraak:namako",
+    "sakuraak:namako_stairs",
+    "sakuraak:namako_slab"
   ]
 }

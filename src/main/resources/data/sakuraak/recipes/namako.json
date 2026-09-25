@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PKP",
+    "KTK",
+    "PKP"
+  ],
+  "key": {
+    "P": {
+      "item": "sakuraak:plaster"
+    },
+    "K": {
+      "item": "sakuraak:kawara"
+    },
+    "T": {
+      "item": "sakuraak:tudura"
+    }
+  },
+  "result": {
+    "item": "sakuraak:namako",
+    "count": 8
+  }
+}

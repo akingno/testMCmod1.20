@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "sakuraak:block/sakura_log",
+        "top": "sakuraak:block/sakura_log",
+        "side": "sakuraak:block/sakura_log"
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    { "item": "minecraft:cooked_porkchop" },
+    { "item": "sakuraak:meshi" }
+  ],
+  "result": {
+    "item": "sakuraak:katsumeshi",
+    "count": 1
+  }
+}

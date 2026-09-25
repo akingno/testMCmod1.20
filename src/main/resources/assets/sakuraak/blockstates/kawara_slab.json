@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "sakuraak:block/kawara_slab" },
+        "type=top": { "model": "sakuraak:block/kawara_slab_top" },
+        "type=double": { "model": "sakuraak:block/kawara" }
+    }
+}

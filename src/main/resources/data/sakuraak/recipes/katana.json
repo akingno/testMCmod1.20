@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    " I ",
+    " T "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "T": {
+      "item": "sakuraak:tudura"
+    }
+  },
+  "result": {
+    "item": "sakuraak:katana",
+    "count": 1
+  }
+}

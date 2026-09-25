@@ -16,10 +16,12 @@ out
 # gradle
 build
 .gradle
+/src/generated/
 
 # other
 eclipse
 run
+参考
 
 # Files from Forge MDK
 forge*changelog.txt

@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "sakuraak:block/kawara",
+        "top": "sakuraak:block/kawara",
+        "side": "sakuraak:block/kawara"
+    }
+}

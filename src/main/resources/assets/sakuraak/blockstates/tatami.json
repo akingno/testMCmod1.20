@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sakuraak:block/tatami",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sakuraak:block/tatami"
+    },
+    "facing=south": {
+      "model": "sakuraak:block/tatami",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sakuraak:block/tatami",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "sakuraak:block/sakura_log",
+    "end": "sakuraak:block/sakura_log_top"
+  }
+}

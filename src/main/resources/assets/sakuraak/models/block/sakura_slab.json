@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "sakuraak:block/sakura_planks",
+        "top": "sakuraak:block/sakura_planks",
+        "side": "sakuraak:block/sakura_planks"
+    }
+}

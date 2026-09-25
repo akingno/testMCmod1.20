@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BTB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:brick"
+    },
+    "T": {
+      "item": "sakuraak:tudura"
+    }
+  },
+  "result": {
+    "item": "sakuraak:kawara",
+    "count": 8
+  }
+}

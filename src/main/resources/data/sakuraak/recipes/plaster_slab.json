@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "sakuraak:plaster"
+    }
+  },
+  "result": {
+    "item": "sakuraak:plaster_slab",
+    "count": 6
+  }
+}

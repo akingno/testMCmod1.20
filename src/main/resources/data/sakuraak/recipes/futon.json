@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    "BBB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:white_wool"
+    },
+    "T": {
+      "item": "sakuraak:tudura"
+    }
+  },
+  "result": {
+    "item": "sakuraak:futon",
+    "count": 1
+  }
+}

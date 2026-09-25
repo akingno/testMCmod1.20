@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "sakuraak:block/sakura_log_slab" },
+        "type=top": { "model": "sakuraak:block/sakura_log_slab_top" },
+        "type=double": { "model": "sakuraak:block/sakura_log" }
+    }
+}

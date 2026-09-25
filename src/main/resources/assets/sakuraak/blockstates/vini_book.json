@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sakuraak:block/vini_book",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "sakuraak:block/vini_book",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "sakuraak:block/vini_book"
+    },
+    "facing=west": {
+      "model": "sakuraak:block/vini_book",
+      "y": 90
+    }
+  }
+}

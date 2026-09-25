@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "sakuraak:block/kawara",
+        "top": "sakuraak:block/kawara",
+        "side": "sakuraak:block/kawara"
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:water_bucket"
+  },
+  "result": "sakuraak:spring_bucket",
+  "experience": 0.0,
+  "cookingtime": 200
+}
+

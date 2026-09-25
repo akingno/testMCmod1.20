@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "sakuraak:block/plaster_slab" },
+        "type=top": { "model": "sakuraak:block/plaster_slab_top" },
+        "type=double": { "model": "sakuraak:block/plaster" }
+    }
+}

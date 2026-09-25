@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "sakuraak:tatami_nb"
+    }
+  ],
+  "result": {
+    "item": "sakuraak:tatami",
+    "count": 1
+  }
+}

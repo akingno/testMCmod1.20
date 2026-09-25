@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sakuraak:block/waterwheel",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "sakuraak:block/waterwheel",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "sakuraak:block/waterwheel"
+    },
+    "facing=west": {
+      "model": "sakuraak:block/waterwheel",
+      "y": 90
+    }
+  }
+}
